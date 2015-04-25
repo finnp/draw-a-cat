@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "How to draw a cat with JavaScript",
   "main": "index.js",
+  "bin": "./cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./cli.js"  
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/finnp/draw-a-cat/issues"
   },
-  "homepage": "https://github.com/finnp/draw-a-cat"
+  "homepage": "https://github.com/finnp/draw-a-cat",
+  "dependencies": {
+    "component-delegate": "^0.2.3",
+    "edit": "^1.0.1",
+    "element-class": "^0.2.0",
+    "insert-css": "^0.2.0",
+    "browser-menu": "^1.0.1",
+    "oncall": "^1.0.0",
+    "wzrd": "^1.2.1"
+  }
 }
