@@ -62,7 +62,7 @@ module.exports = function(opts) {
     menu.on('select', function (label) {
       actions.showall()
       xhr({
-        uri: '/exercises/' + util.idFromName(label) + '/problem.md'
+        uri: 'exercises/' + util.idFromName(label) + '/problem.md'
       }, function (err, resp, body) {
         if(err) console.error(err)
         guideDiv.innerHTML = marked(body)
