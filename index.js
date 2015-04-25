@@ -3,6 +3,11 @@ var defaultcss = require('insert-css')
 var on = require('component-delegate').bind
 var elementClass = require('element-class')
 var oncall = require('oncall')
+var createMenu = require('browser-menu')
+var xhr = require('xhr')
+var marked = require('marked')
+var menuItems = require('./exercises/menu.json')
+var util = require('./util.js')
 
 module.exports = function(opts) {
   if (!opts || !opts.guide) throw new Error('Must specify guide')
@@ -10,7 +15,7 @@ module.exports = function(opts) {
   var editorDiv = document.querySelector('.editor')
   var guideDiv = document.querySelector('.guide')
   var canvasDiv = document.querySelector('.canvas')
-  
+    
   var canvas = document.createElement('canvas')
   canvas.width = canvasDiv.offsetWidth
   canvas.height = canvasDiv.offsetHeight
@@ -24,8 +29,19 @@ module.exports = function(opts) {
     "hide-bottom": function() {
       elementClass(editorDiv).add('hidden')
       elementClass(guideDiv).add('tall')
+    },
+    "hideall": function () {
+      elementClass(editorDiv).add('hidden')
+      elementClass(guideDiv).add('hidden')
+      elementClass(canvasDiv).add('hidden')
+    },
+    "showall": function () {
+      elementClass(editorDiv).remove('hidden')
+      elementClass(guideDiv).remove('hidden')
+      elementClass(canvasDiv).remove('hidden')
     }
   }
+  
   // instantiate the editor
   var cm = edit({
     container: editorDiv,
@@ -33,7 +49,30 @@ module.exports = function(opts) {
     value: 'ctx.fillRect(10, 10, 50, 50)',
     autofocus: false
   })
-
+  
+  actions.hideall()
+  
+    var menu = createMenu({
+      width: 29,
+      x: 4,
+      y: 4,
+      bg: '#1F8DD6',
+      fg: '#f2f2f2'
+    })
+    menu.on('select', function (label) {
+      actions.showall()
+      xhr({
+        uri: '/exercises/' + util.idFromName(label) + '/problem.md'
+      }, function (err, resp, body) {
+        if(err) console.error(err)
+        guideDiv.innerHTML = marked(body)
+      })
+      menu.close()
+    })
+    menu.reset()
+    menuItems.forEach(function (item) {
+      menu.add(item)
+    })
 
   // autosave for now
   cm.on('change', render)
