@@ -41,7 +41,6 @@ module.exports = function(opts) {
       elementClass(canvasDiv).remove('hidden')
     },
     "show-menu": function () {
-      this.hideall()
       startMenu()
     }
   }
@@ -60,6 +59,7 @@ module.exports = function(opts) {
 
   function startMenu() {
     if(menu) menu.close()
+    actions.hideall()
     menu = createMenu({
       width: 29,
       x: 4,
@@ -83,9 +83,16 @@ module.exports = function(opts) {
         guideDiv.innerHTML = marked(body)
       })
       menu.close()
+      cm.focus()
     })
   }
   startMenu()
+  window.addEventListener('keydown', function (e) {
+    if (e.metaKey) return
+    if(e.keyCode === 27) {
+      startMenu()
+    }
+  }, false)
 
   // autosave for now
   cm.on('change', oneditorchange)
