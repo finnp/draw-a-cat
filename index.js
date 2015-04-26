@@ -39,6 +39,10 @@ module.exports = function(opts) {
       elementClass(editorDiv).remove('hidden')
       elementClass(guideDiv).remove('hidden')
       elementClass(canvasDiv).remove('hidden')
+    },
+    "show-menu": function () {
+      this.hideall()
+      startMenu()
     }
   }
   
@@ -52,12 +56,20 @@ module.exports = function(opts) {
   
   actions.hideall()
   
-    var menu = createMenu({
+  var menu 
+
+  function startMenu() {
+    if(menu) menu.close()
+    menu = createMenu({
       width: 29,
       x: 4,
       y: 4,
       bg: '#1F8DD6',
       fg: '#f2f2f2'
+    })  
+    menu.reset()
+    menuItems.forEach(function (item) {
+      menu.add(item)
     })
     menu.on('select', function (label) {
       actions.showall()
@@ -72,10 +84,8 @@ module.exports = function(opts) {
       })
       menu.close()
     })
-    menu.reset()
-    menuItems.forEach(function (item) {
-      menu.add(item)
-    })
+  }
+  startMenu()
 
   // autosave for now
   cm.on('change', oneditorchange)
