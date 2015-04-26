@@ -61,8 +61,11 @@ module.exports = function(opts) {
     })
     menu.on('select', function (label) {
       actions.showall()
+      document.querySelector('#exercise').innerText = label
+      var id = util.idFromName(label)
+      cm.setValue(localStorage.getItem(id) || cm.getValue())
       xhr({
-        uri: 'exercises/' + util.idFromName(label) + '/problem.md'
+        uri: 'exercises/' + id + '/problem.md'
       }, function (err, resp, body) {
         if(err) console.error(err)
         guideDiv.innerHTML = marked(body)
@@ -75,11 +78,17 @@ module.exports = function(opts) {
     })
 
   // autosave for now
-  cm.on('change', render)
-  render() // onload
+  cm.on('change', oneditorchange)
+  oneditorchange() // onload
 
-  function render() {
+  function oneditorchange() {
     var code = cm.getValue()
+
+    // save to localstorage
+    var id = util.idFromName(document.querySelector('#exercise').innerText)
+    localStorage.setItem(id, code)
+    
+    // render
     try {
       var canvas = document.querySelector('canvas')
       var ctx = canvas.getContext('2d')
