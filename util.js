@@ -1,6 +1,6 @@
 function idFromName (id) {
   return id.toLowerCase()
-    .replace(/\s/g, '_')
+    .replace(/\s/g, '-')
     .replace(/[^\w]/gi, '')
 }
 
