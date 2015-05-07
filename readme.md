@@ -16,3 +16,9 @@ Work in progress.
 - `draw-a-cat verify number1.js` use mock canvas for verification, open browser with differ
 
 ### Browser version
+
+Verification
+- Compare image pixel by pixel
+  - Pro: Different ways to arrive at the same outcome
+  - Contra: If it's only off by a pixel, it will fail
+- Test for context method calls

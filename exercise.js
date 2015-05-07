@@ -2,20 +2,21 @@ var edit = require('edit')
 var defaultcss = require('insert-css')
 var on = require('component-delegate').bind
 var elementClass = require('element-class')
-var oncall = require('oncall')
 var createMenu = require('browser-menu')
 var xhr = require('xhr')
 var marked = require('marked')
-var menuItems = require('./exercises/menu.json')
-var util = require('./util.js')
+var util = require('./util')
 
-module.exports = function(opts) {
-  if (!opts || !opts.guide) throw new Error('Must specify guide')
-  
+module.exports = function (opts) {
+  var exercise = opts.exercise
+  var id = util.idFromName( window.location.pathname.split('/')[2] )
+
   var editorDiv = document.querySelector('.editor')
   var guideDiv = document.querySelector('.guide')
   var canvasDiv = document.querySelector('.canvas')
-    
+  var buttonsDiv = document.querySelector('.buttons')
+  var feedbackSpan = document.querySelector('.feedback')
+      
   var canvas = document.createElement('canvas')
   canvas.width = canvasDiv.offsetWidth
   canvas.height = canvasDiv.offsetHeight
@@ -34,17 +35,19 @@ module.exports = function(opts) {
       elementClass(editorDiv).add('hidden')
       elementClass(guideDiv).add('hidden')
       elementClass(canvasDiv).add('hidden')
+      elementClass(buttonsDiv).add('hidden')
     },
     "showall": function () {
       elementClass(editorDiv).remove('hidden')
       elementClass(guideDiv).remove('hidden')
       elementClass(canvasDiv).remove('hidden')
+      elementClass(buttonsDiv).remove('hidden')
     },
-    "show-menu": function () {
-      startMenu()
+    "verify": function () {
+      verify()
     }
   }
-  
+    
   // instantiate the editor
   var cm = edit({
     container: editorDiv,
@@ -53,45 +56,18 @@ module.exports = function(opts) {
     autofocus: false
   })
   
-  actions.hideall()
-  
-  var menu 
-
-  function startMenu() {
-    if(menu) menu.close()
-    actions.hideall()
-    menu = createMenu({
-      width: 29,
-      x: 4,
-      y: 4,
-      bg: '#1F8DD6',
-      fg: '#f2f2f2'
-    })  
-    menu.reset()
-    menuItems.forEach(function (item) {
-      menu.add(item)
-    })
-    menu.on('select', function (label) {
-      actions.showall()
-      document.querySelector('#exercise').innerText = label
-      var id = util.idFromName(label)
-      cm.setValue(localStorage.getItem(id) || cm.getValue())
-      xhr({
-        uri: 'exercises/' + id + '/problem.md'
-      }, function (err, resp, body) {
-        if(err) console.error(err)
-        guideDiv.innerHTML = marked(body)
-      })
-      menu.close()
-      cm.focus()
-    })
-  }
-  startMenu()
+  xhr({
+    uri: 'problem.md'
+  }, function (err, resp, body) {
+    if(err) console.error(err)
+    guideDiv.innerHTML = marked(body)
+  })
+  cm.setValue(localStorage.getItem(id) || cm.getValue())
+    
+  // esc to menu  
   window.addEventListener('keydown', function (e) {
     if (e.metaKey) return
-    if(e.keyCode === 27) {
-      startMenu()
-    }
+    if(e.keyCode === 27) location.href = '/'
   }, false)
 
   // autosave for now
@@ -102,42 +78,46 @@ module.exports = function(opts) {
     var code = cm.getValue()
 
     // save to localstorage
-    var id = util.idFromName(document.querySelector('#exercise').innerText)
     localStorage.setItem(id, code)
     
     // render
     try {
       var canvas = document.querySelector('canvas')
+      // reset canvas
+      canvas.width = canvas.width
       var ctx = canvas.getContext('2d')
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      var spy = oncall(ctx)
-      // pass spy to a checker function
-      spy.on('fillRect', function (a,b,c,d) {
-        console.log('spy', a, b, c, d)
-      })
       eval(code)
     } catch(e) {
       if(!(e instanceof SyntaxError)) console.error(e)
     }
   }
-  // save to browser file system?
+    
+  function verify() {
+    var code = cm.getValue()
+    exercise.verify(code, function (e) {
+      feedbackSpan.innerText = e ? e.message : 'Success'
+      if(!e) localStorage.setItem(id + '-success', 'true')
+    })
+
+  }
+
+    
+    on(document.body, 'a.button', 'click', function(e) {
+      e.preventDefault()
+      var action = e.target.attributes['data-action']
+      if (action) {
+        if (actions[action.value]) actions[action.value]()
+      }
+      return false
+    })
+    
+
+    window.addEventListener('message', onmessage, false)
 
 
+  function onerror(err) {
+    console.error('Error:', err)
+  }
   
-  on(document.body, '.buttons a', 'click', function(e) {
-    e.preventDefault()
-    var action = e.target.attributes['data-action']
-    if (action) {
-      if (actions[action.value]) actions[action.value]()
-    }
-    return false
-  })
-  
-
-  window.addEventListener('message', onmessage, false)
-}
-
-
-function onerror(err) {
-  console.error('Error:', err)
 }

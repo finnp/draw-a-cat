@@ -9,6 +9,12 @@ html, body {
 .CodeMirror .errorLine { background: rgba(255,0,0,0.25); }
 .container { }
 
+.feedback {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+}
+
 .datLogo {
   padding: 3px 5px 0 5px;
   height: 28px;
