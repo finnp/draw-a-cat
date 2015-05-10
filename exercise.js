@@ -102,7 +102,9 @@ module.exports = function (opts) {
         elementClass(feedbackSpan).add('feedback-fail')
         elementClass(feedbackSpan).remove('feedback-success')
       } else {
-        feedbackSpan.innerText = 'Success! Continue with the next exercise.'
+        var nextId = util.nextLesson(id)
+        if(typeof nextId !== 'string') feedbackSpan.innerText = 'Success! You finished the last lesson.'
+        else feedbackSpan.innerHTML = 'Success! Continue with the <a href="../' + nextId + '">next exercise</a>.'
         elementClass(feedbackSpan).remove('feedback-fail')
         elementClass(feedbackSpan).add('feedback-success')
       }

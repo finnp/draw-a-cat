@@ -21,6 +21,9 @@ html, body {
   z-index: 3;
   background-color: #fff;
 }
+.feedback a {
+  color: black;
+}
 .feedback-success {
   border: 2px solid #0c6;
   background-color: #61ff90;
