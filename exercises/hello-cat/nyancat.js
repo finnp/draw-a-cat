@@ -1,6 +1,6 @@
 var catHeight = 150
-var catX = 200
-var catY = 70
+var catX = 0
+var catY = 0
 
 ctx.fillStyle = '#002E68'
 ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)

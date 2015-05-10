@@ -3,6 +3,7 @@ function idFromName (id) {
     .replace(/\s\(completed\)/g, '')
     .replace(/\s/g, '_')
     .replace(/[^\w]/gi, '')
+    .replace(/_/g, '-')
 }
 
 exports.idFromName = idFromName

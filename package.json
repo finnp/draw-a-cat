@@ -31,6 +31,7 @@
     "component-delegate": "^0.2.3",
     "edit": "^1.0.1",
     "element-class": "^0.2.0",
+    "fake-context2d": "^1.0.0",
     "insert-css": "^0.2.0",
     "marked": "^0.3.3",
     "oncall": "^1.0.0",

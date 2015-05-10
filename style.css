@@ -1,5 +1,6 @@
 html, body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
 .CodeMirror { font-size: 12px; height: 100% !important; }
@@ -62,6 +63,7 @@ html, body {
 }
 
 .editor {
+  z-index: 2;
   position: absolute;
   top: 50%;
   left: 0%;
@@ -78,6 +80,7 @@ html, body {
   padding: 20px;
   border-bottom: 1px solid #ddd;
   border-left: 1px solid #ddd;
+  overflow-x: scroll;
 }
 
 .canvas {
