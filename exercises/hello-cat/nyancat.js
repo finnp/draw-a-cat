@@ -1,3 +1,4 @@
+// variables
 var catHeight = 150
 var catX = 0
 var catY = 0
@@ -23,11 +24,9 @@ rainbowColors.forEach(function(color, index) {
 
 // cat
 
-
 ctx.translate(catX, catY)
 
 // tail
-
 
 ctx.fillStyle = '#999999'
 ctx.lineWidth = 12
@@ -43,11 +42,10 @@ ctx.fill()
  
 // feet
 
-
 drawCircle(40, 208 - 150 + catHeight - 50, 13)
 ctx.stroke()
 ctx.fill()
-drawCircle(09, 208 - 150 + catHeight - 50, 13)
+drawCircle(9, 208 - 150 + catHeight - 50, 13)
 ctx.stroke()
 ctx.fill()
 drawCircle(160, 205 - 150 + catHeight - 50, 13)
@@ -136,9 +134,6 @@ ctx.beginPath()
 ctx.arc(  + 5 + 175 + headOffsetX, headY + 184 - 150 + catHeight - 50, 10, 2*Math.PI, 3 * Math.PI)
 ctx.stroke()
 
-
-
- 
 function drawCircle(x, y, r) {
 	ctx.beginPath()
 	ctx.arc(x, y, r, 0, 2*Math.PI)
