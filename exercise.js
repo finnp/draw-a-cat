@@ -86,7 +86,7 @@ module.exports = function (opts) {
       canvas.width = canvas.width
       var ctx = canvas.getContext('2d')
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      eval(code)
+      eval(code)  
     } catch(e) {
       if(!(e instanceof SyntaxError)) console.error(e)
     }
@@ -95,7 +95,18 @@ module.exports = function (opts) {
   function verify() {
     var code = cm.getValue()
     exercise.verify(code, function (e) {
-      feedbackSpan.innerText = e ? e.message : 'Success'
+      if(e) {
+        if(e instanceof ReferenceError || e instanceof SyntaxError) {
+          e.message = 'Error: ' + e.message
+        }
+        feedbackSpan.innerText = 'Try again! ' + e.message
+        elementClass(feedbackSpan).add('feedback-fail')
+        elementClass(feedbackSpan).remove('feedback-success')
+      } else {
+        feedbackSpan.innerText = 'Success! Continue with the next exercise.'
+        elementClass(feedbackSpan).remove('feedback-fail')
+        elementClass(feedbackSpan).add('feedback-success')
+      }
       if(!e) localStorage.setItem(id + '-success', 'true')
     })
 

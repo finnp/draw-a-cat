@@ -11,9 +11,23 @@ html, body {
 .container { }
 
 .feedback {
+  font-family: monospace;
+  font-size: 16px;
   position: absolute;
   right: 10px;
   top: 40px;
+  margin: 0px;
+  padding: 5px;
+  z-index: 3;
+  background-color: #fff;
+}
+.feedback-success {
+  border: 2px solid #0c6;
+  background-color: #61ff90;
+}
+.feedback-fail {
+  border: 2px solid #d65d4a;
+  background-color: rgb(255, 110, 87);
 }
 
 .datLogo {
