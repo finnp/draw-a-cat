@@ -9,7 +9,7 @@ var util = require('./util')
 
 module.exports = function (opts) {
   var exercise = opts.exercise
-  var id = window.location.pathname.split('/')[2]
+  var id = opts.id
 
   var editorDiv = document.querySelector('.editor')
   var guideDiv = document.querySelector('.guide')
