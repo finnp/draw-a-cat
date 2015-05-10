@@ -52,7 +52,6 @@ module.exports = function (opts) {
   var cm = edit({
     container: editorDiv,
     mode: 'javascript',
-    value: 'ctx.fillRect(10, 10, 50, 50)',
     autofocus: false
   })
   
@@ -62,7 +61,7 @@ module.exports = function (opts) {
     if(err) console.error(err)
     guideDiv.innerHTML = marked(body)
   })
-  cm.setValue(localStorage.getItem(id) || cm.getValue())
+  cm.setValue(localStorage.getItem(id) || exercise.preload || cm.getValue())
     
   // esc to menu  
   window.addEventListener('keydown', function (e) {

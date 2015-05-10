@@ -14,6 +14,7 @@ menu.forEach(function (item) {
 })
 
 wzrd.http({
-  entries: entries
+  entries: entries,
+  browserifyArgs: '-t brfs'
 }).listen(8080)
 open('http://localhost:8080')

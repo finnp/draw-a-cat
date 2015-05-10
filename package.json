@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/finnp/draw-a-cat",
   "dependencies": {
+    "brfs": "^1.4.0",
     "browser-menu": "^1.0.1",
     "component-delegate": "^0.2.3",
     "edit": "^1.0.1",
