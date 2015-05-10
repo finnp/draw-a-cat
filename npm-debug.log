@@ -1,0 +1,38 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@2.8.4
+3 info using node@v1.3.0
+4 verbose node symlink /usr/local/bin/node
+5 verbose run-script [ 'prestart', 'start', 'poststart' ]
+6 info prestart draw-a-cat@1.0.0
+7 info start draw-a-cat@1.0.0
+8 verbose unsafe-perm in lifecycle true
+9 info draw-a-cat@1.0.0 Failed to exec start script
+10 verbose stack Error: draw-a-cat@1.0.0 start: `./cli.js`
+10 verbose stack Exit status 1
+10 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+10 verbose stack     at emitTwo (events.js:87:13)
+10 verbose stack     at EventEmitter.emit (events.js:169:7)
+10 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+10 verbose stack     at emitTwo (events.js:87:13)
+10 verbose stack     at ChildProcess.emit (events.js:169:7)
+10 verbose stack     at maybeClose (child_process.js:984:16)
+10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1057:5)
+11 verbose pkgid draw-a-cat@1.0.0
+12 verbose cwd /Users/finn/code/npm/draw-a-cat
+13 error Darwin 14.3.0
+14 error argv "node" "/usr/local/bin/npm" "start"
+15 error node v1.3.0
+16 error npm  v2.8.4
+17 error code ELIFECYCLE
+18 error draw-a-cat@1.0.0 start: `./cli.js`
+18 error Exit status 1
+19 error Failed at the draw-a-cat@1.0.0 start script './cli.js'.
+19 error This is most likely a problem with the draw-a-cat package,
+19 error not with npm itself.
+19 error Tell the author that this fails on your system:
+19 error     ./cli.js
+19 error You can get their info via:
+19 error     npm owner ls draw-a-cat
+19 error There is likely additional logging output above.
+20 verbose exit [ 1, true ]

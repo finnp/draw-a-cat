@@ -1,4 +1,4 @@
-var edit = require('edit')
+var createEditor = require('javascript-editor')
 var defaultcss = require('insert-css')
 var on = require('component-delegate').bind
 var elementClass = require('element-class')
@@ -49,10 +49,8 @@ module.exports = function (opts) {
   }
     
   // instantiate the editor
-  var cm = edit({
-    container: editorDiv,
-    mode: 'javascript',
-    autofocus: false
+  var cm = createEditor({
+    container: editorDiv
   })
   
   xhr({
@@ -73,7 +71,8 @@ module.exports = function (opts) {
   cm.on('change', oneditorchange)
   oneditorchange() // onload
 
-  function oneditorchange() {
+  function oneditorchange(error) {
+    console.error(error)
     var code = cm.getValue()
 
     // save to localstorage

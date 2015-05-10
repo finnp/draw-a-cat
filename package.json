@@ -33,6 +33,7 @@
     "element-class": "^0.2.0",
     "fake-context2d": "^1.0.0",
     "insert-css": "^0.2.0",
+    "javascript-editor": "^0.2.1",
     "marked": "^0.3.3",
     "oncall": "^1.0.0",
     "wzrd": "^1.2.1",
