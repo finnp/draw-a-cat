@@ -21,5 +21,5 @@ menuItems.forEach(function (item) {
 
 menu.on('select', function (label) {
   var id = util.idFromName(label)
-  window.location.href = '/exercises/' + id
+  window.location.href = 'exercises/' + id
 })
