@@ -21,7 +21,7 @@ Those are so called variables (therefore the `var`) that you can assign value to
 Try to change some of this values and see what happens. Don't worry if you break
 something (e.g. the cat is disappearing).
 
-## Goal
+## Instructions
 
-Set `catX` and `catY` to 100, to put the cat out of the corner.
+Set `catX` and `catY` in the editor below to 100, to put the cat out of the corner.
 Then click verify to pass this challenge.
