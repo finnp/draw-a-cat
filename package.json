@@ -1,6 +1,6 @@
 {
   "name": "draw-a-cat",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "How to draw a cat with JavaScript",
   "main": "index.js",
   "bin": "./cli.js",
