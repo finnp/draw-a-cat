@@ -5,13 +5,13 @@ var fs = require('fs')
 var util = require('./util')
 var menu = require('./exercises/menu.json')
 
-var entries = [{from: 'app.js', to: 'bundle.js'}]
+var entries = [{from: __dirname + '/app.js', to: __dirname + '/bundle.js'}]
 
 menu.forEach(function (item) {
   var id = util.idFromName(item)
   entries.push({
-    from: 'exercises/' + id + '/index.js',
-    to: 'exercises/' + id + '/bundle.js'
+    from: __dirname + '/exercises/' + id + '/index.js',
+    to: __dirname + '/exercises/' + id + '/bundle.js'
   })
 })
 
