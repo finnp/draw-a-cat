@@ -16,7 +16,7 @@ var catX = 0
 var catY = 0
 ```
 
-Those are so called variables (therefore the `var`) that you can assign value to.
+Those are so called variables (therefore the `var`) that you can assign a value to.
 
 Try to change some of this values and see what happens. Don't worry if you break
 something (e.g. the cat is disappearing).

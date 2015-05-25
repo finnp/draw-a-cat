@@ -28,6 +28,7 @@
   "dependencies": {
     "brfs": "^1.4.0",
     "browser-menu": "^1.0.1",
+    "color": "^0.8.0",
     "component-delegate": "^0.2.3",
     "edit": "^1.0.1",
     "element-class": "^0.2.0",
