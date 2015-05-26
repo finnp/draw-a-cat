@@ -19,6 +19,8 @@ var catX = 0
 var catY = 0
 ```
 
+## JavaScript: Variables
+
 Those are so called variables (therefore the `var`) that you can assign a value to.
 They are called variables because their values can change over time.
 
