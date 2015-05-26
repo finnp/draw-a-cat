@@ -43,9 +43,8 @@ module.exports = function (opts) {
       elementClass(canvasDiv).remove('hidden')
       elementClass(buttonsDiv).remove('hidden')
     },
-    "verify": function () {
-      verify()
-    }
+    "verify": verify,
+    "reset": reset
   }
     
   // instantiate the editor
@@ -72,7 +71,7 @@ module.exports = function (opts) {
   oneditorchange() // onload
 
   function oneditorchange(error) {
-    console.error(error)
+    if(error) console.error(error)
     var code = cm.getValue()
 
     // save to localstorage
@@ -111,6 +110,11 @@ module.exports = function (opts) {
       if(!e) localStorage.setItem(id + '-success', 'true')
     })
 
+  }
+  
+  function reset() {
+    var m = 'Do you really want to reset the code? You will lose your progress of this exercise.'
+    if(confirm(m)) cm.setValue(exercise.preload)
   }
 
     

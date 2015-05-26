@@ -7,8 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./cli.js",
-    "build": "./compile.js",
-    "deploy": "gh-pages-deploy"
+    "build": "npm run html && ./compile.js",
+    "deploy": "gh-pages-deploy",
+    "html": "./copy-html.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,8 @@
     "xhr": "^2.0.1"
   },
   "devDependencies": {
-    "browserify": "^9.0.8"
+    "browserify": "^9.0.8",
+    "glob": "^5.0.10"
   },
   "gh-pages-deploy": {
     "prep": [
