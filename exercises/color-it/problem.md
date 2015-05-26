@@ -35,4 +35,4 @@ This texts are called Strings in JavaScript. Here are a few examples:
 
 ## Instructions
 
-Draw a rectangle with the color 'rgb(236,203,170)'.
+Draw a rectangle with the color `rgb(236,203,170)`.
