@@ -1,5 +1,5 @@
 var run = require('../../exercise.js')
 run({
-  id: 'rectangle',
+  id: 'square-cat',
   exercise: require('./exercise')
 })
