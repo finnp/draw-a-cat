@@ -15,7 +15,7 @@ They start and end with `[ ]` brackets and the values are separated by commas.
 In JavaScript we also call this lists Arrays, but that's just a fancy programmer
 word for lists.
 
-The `rainbowColors.forEach` means that we want to loop through all items of the 
+The `rainbowColors.forEach` means that we want to loop through all items of the
 `rainbowColors` list. For each color we are drawing a rectangle at `(0,50)`. But
 we only see the last color right now, because all the rectangles are drawn at the
 same position.
@@ -32,6 +32,3 @@ rainbowColors.forEach(function(color, index) {
 
 ## Instructions
 
-
-
-(TODO: To many new concepts: Arrays, Functions, forEach ....)
