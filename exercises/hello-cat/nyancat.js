@@ -1,7 +1,7 @@
 // variables
 var catHeight = 140
-var catX = 120
-var catY = 100
+var catX = 0
+var catY = 0
 
 // background color
 
