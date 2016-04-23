@@ -7,7 +7,7 @@ Let's try a different cat color. How about `'rgb(236,203,170)'`?
 
 You don't know that color? It [looks like this](http://www.color-hex.com/color/eccbaa).
 The values between the brackets represent the colors red, green and blue. 0 means
-none of this color and 255 means a lot of this color. So `'rgb(255, 0, 0)'` would be 
+none of this color and 255 means a lot of this color. So `'rgb(255, 0, 0)'` would be
 red.
 
 To draw a rectangle in a different color we have to set the `fillStyle` attribute
@@ -22,10 +22,10 @@ ctx.fillRect(50,50,100,100)
 
 JavaScript doesn't know colors by default. That's why the colors are actually
 represented as text. Text in JavaScript always needs to be surrounded by `''`
-characters or alternatively with `""`. It does this, so it knows that you mean
-text and not variables or numbers.
+characters or alternatively with `""`. This is needed to know that you actually
+meant text and not variables or numbers.
 
-This texts are called Strings in JavaScript. Here are a few examples:
+These texts are called Strings in JavaScript. Here are a few examples:
 ```js
 'hello I am a String'
 "I am a String as well"
@@ -35,4 +35,4 @@ This texts are called Strings in JavaScript. Here are a few examples:
 
 ## Instructions
 
-Draw a rectangle with the color `rgb(236,203,170)`.
+Draw a rectangle with the color `'rgb(236,203,170)'`.
