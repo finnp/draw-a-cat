@@ -29,21 +29,21 @@
   "dependencies": {
     "brfs": "^1.4.0",
     "browser-menu": "^1.0.1",
-    "color": "^0.8.0",
+    "color": "^0.11.3",
     "component-delegate": "^0.2.3",
     "edit": "^1.0.1",
     "element-class": "^0.2.0",
     "fake-context2d": "^1.0.0",
-    "insert-css": "^0.2.0",
-    "javascript-editor": "^0.2.1",
+    "insert-css": "^1.0.0",
+    "javascript-editor": "^1.0.3",
     "marked": "^0.3.3",
     "oncall": "^1.0.0",
     "wzrd": "^1.2.1",
     "xhr": "^2.0.1"
   },
   "devDependencies": {
-    "browserify": "^9.0.8",
-    "glob": "^5.0.10"
+    "browserify": "^13.1.0",
+    "glob": "^7.0.6"
   },
   "gh-pages-deploy": {
     "prep": [
